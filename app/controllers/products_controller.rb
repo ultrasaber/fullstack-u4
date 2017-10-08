@@ -4,7 +4,10 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products       = Product.all
+    @product_count  = @products.count
+    @average_price  = Product.average(:price)
+    @total_quantity = Product.sum(:stock_quantity)
   end
 
   # GET /products/1
